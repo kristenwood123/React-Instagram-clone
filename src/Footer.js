@@ -1,8 +1,9 @@
 import React from 'react'
+import './Footer.css'
 
 function Footer() {
   return (
-    <div>
+    <div className='footer'>
       <ul>
         <li>About</li>
         <li>Blogs</li>
@@ -11,17 +12,8 @@ function Footer() {
         <li>API</li>
         <li>Privacy</li>
         <li>Terms</li>
-        <li>Top Accounts</li>
-        <li>Hashtags</li>
-        <li>Locations</li>
-        <li>Beauty</li>
-        <li>Dance & Performance</li>
-        <li>Fitness</li>
-        <li>Food & Drink</li>
-        <li>Home & Garden</li>
-        <li>Music</li>
-        <li>Visual Arts</li>
       </ul>
+      <span className='cred'>Made by Kristen 2021</span>
     </div>
   )
 }

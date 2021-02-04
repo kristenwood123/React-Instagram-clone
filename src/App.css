@@ -9,6 +9,8 @@ body {
 }
 
 .app__header {
+  display: flex;
+  justify-content: space-between;
   border-bottom: 1px solid lightgray;
   background-color: white;
 }
@@ -17,6 +19,23 @@ body {
   object-fit: contain;
   margin-left: 10px;
   padding: 15px 0px 10px 15px;
+}
+
+.app__headerInput {
+  height: 25px;
+  margin-top: 15px;
+  width: 200px;
+  background-color: #fafafa;
+  border: 1px solid lightgray;
+  text-align: center;
+  color: #fcfcfc;
+  border-radius: 1px;
+  font-size: 14px;
+}
+
+.app_posts {
+  padding: 20px;
+  display: flex;
 }
 
 .app__login {
@@ -44,7 +63,7 @@ body {
   margin: 20px 0;
 }
 
-img::hover {
+img:hover {
   opacity: 0.08;
 }
 .img__wrapper {

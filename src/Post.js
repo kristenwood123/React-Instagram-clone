@@ -3,6 +3,7 @@ import './Post.css'
 import Avatar from '@material-ui/core/Avatar'
 
 const Post = ({ imageUrl, username, caption }) => {
+  
   return (
     <div className='post'>
       <div className="post__header">

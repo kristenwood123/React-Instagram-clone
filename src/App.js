@@ -6,7 +6,7 @@ import Post from './Post'
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { Button, Input } from '@material-ui/core'
-// import ImageUpload from './ImageUpload'
+import ImageUpload from './ImageUpload'
 // import InstagramEmbed from 'react-instagram-embed';
 
 
@@ -100,7 +100,14 @@ const App = () => {
   }
 
   return (
-      <div className="app">       
+      <div className="app">    
+
+      {user?.displayName ? (
+        <ImageUpload username={user.displayName} />
+      ) : (
+        <h3>Sorry you need to login to upload</h3>
+      )}
+      
         <Modal
           open={open}
           onClose={() => setOpen(false)}
@@ -173,9 +180,6 @@ const App = () => {
           className='app__headerInput' 
           type="text" placeholder='Search'
           />
-
-      {/* <Button onClick={() => setOpen(true)}>Sign Up</Button>
-      <Button onClick={() => setOpenSignIn(true)}>Sign In</Button> */}
           { user ? (
             <Button onClick={() => auth.signOut()}>Logout</Button>
           ) : (

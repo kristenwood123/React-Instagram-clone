@@ -10,61 +10,57 @@ import { Button, Input } from '@material-ui/core'
 // import InstagramEmbed from 'react-instagram-embed';
 
 
-// function getModalStyle() {
-//   const top = 50;
-//   const left = 50;
+function getModalStyle() {
+  const top = 50;
+  const left = 50;
 
-//   return {
-//     top: `${top}%`,
-//     left: `${left}%`,
-//     transform: `translate(-${top}%, -${left}%)`,
-//   };
-// }
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
 
-// const useStyles = makeStyles((theme) => ({
-//   paper: {
-//     position: 'absolute',
-//     width: 400,
-//     backgroundColor: theme.palette.background.paper,
-//     border: '1px solid lightgray',
-//     boxShadow: theme.shadows[5],
-//     padding: theme.spacing(2, 4, 3),
-//   },
-// }));
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    position: 'absolute',
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    border: '1px solid lightgray',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
+}));
 
 const App = () => {
   const [posts, setPosts] = useState([]);
-
-  //UseEffect runs a piece of code based on a specific condition
-
- 
-  // const classes = useStyles()
+  const classes = useStyles()
   
-  // const [openSignIn, setOpenSignIn] = useState(false)
-  // const [open, setOpen] = useState(false)
-  // const [modalStyle] = useState(getModalStyle)
-  // const [email, setEmail] = useState('')
-  // const [username, setUsername] = useState('')
-  // const [password, setPassword] = useState('')
-  // const [user, setUser] = useState(null)
+  const [open, setOpen] = useState(false)
+  const [modalStyle] = useState(getModalStyle)
+  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [user, setUser] = useState(null)
+  const [openSignIn, setOpenSignIn] = useState(false)
 
-  //checks if you are loggin in or not
-  // useEffect(() => {
-  //   const unsubscribe = auth.onAuthStateChanged((authUser) => {
-  //     if (authUser) {
-  //       //if user is loggined in....
-  //       setUser(authUser)
-  //        //dont update usernmae
-  //     } else {
-  //       setUser(null)
-  //     }
+  // checks if you are loggin in or not
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        //if user is loggined in....
+        setUser(authUser)
+         //dont update usernmae
+      } else {
+        setUser(null)
+      }
 
-  //   })
-  //   return () => {
-  //     //perform some clean up actions
-  //     unsubscribe()
-  //   }
-  // }, [user, username])
+    })
+    return () => {
+      //perform some clean up actions
+      unsubscribe()
+    }
+  }, [user, username])
 
 
   useEffect(() => {
@@ -78,41 +74,40 @@ const App = () => {
   });
 }, [])
 
-//   const signUp = (e) => {
-//     e.preventDefault()
-//     auth
-//     .createUserWithEmailAndPassword(email, password)
-//     .then((authUser) => {
-//       return authUser.user.updateProfile({
-//         displayName: username,
-//       })
-//     })
-//     .catch((error) => alert(error.message))
+  const signUp = (e) => {
+    e.preventDefault()
+    auth
+    .createUserWithEmailAndPassword(email, password)
+    .then((authUser) => {
+      return authUser.user.updateProfile({
+        displayName: username,
+      })
+    })
+    .catch((error) => alert(error.message))
     
-//     //close modal
-//     setOpen(false)
-//   }
+    //close modal
+    setOpen(false)
+  }
 
-//   const signIn = (e) => {
-//     e.preventDefault();
-//     auth
-//       .signInWithEmailAndPassword(email, password)
-//       .catch((error) => alert(error.message))
+  const signIn = (e) => {
+    e.preventDefault();
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .catch((error) => alert(error.message))
 
-//       //close modal
-//       setOpenSignIn(false)
-//   }
+      //close modal
+      setOpenSignIn(false)
+  }
 
   return (
-      <div className="app">
-        
-        {/* <Modal
-        open={open}
-        onClose={() => setOpen(false)}
+      <div className="app">       
+        <Modal
+          open={open}
+          onClose={() => setOpen(false)}
         >
           <div style={modalStyle} className={classes.paper}>
-            <form
-              className='app__signup'>
+
+            <form className='app__signup'>
               <center>
                 <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt=""/>
               </center>
@@ -134,14 +129,12 @@ const App = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <Button 
-                onClick={signUp}
-                type='submit'>Sign up</Button>
+                <Button onClick={signUp} type='submit'>Sign up</Button>
           </form>   
         </div>
-      </Modal> */}
+      </Modal>
 
-        {/* <Modal
+        <Modal
           open={openSignIn}
           onClose={() => setOpenSignIn(false)}>
 
@@ -168,19 +161,29 @@ const App = () => {
                 type='submit'>Sign In</Button>
             </form>   
         </div>
-      </Modal> */}
+      </Modal>
 
         <div className="app__header">
-          <img className='app__headerImage' src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="Instagram logo"/>
-          <input className='app__headerInput' type="text" placeholder='Search'/>
-          {/* { user ? (
+          <img 
+          className='app__headerImage' 
+          src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" 
+          alt="Instagram logo"
+          />
+          <input 
+          className='app__headerInput' 
+          type="text" placeholder='Search'
+          />
+
+      {/* <Button onClick={() => setOpen(true)}>Sign Up</Button>
+      <Button onClick={() => setOpenSignIn(true)}>Sign In</Button> */}
+          { user ? (
             <Button onClick={() => auth.signOut()}>Logout</Button>
           ) : (
             <div className="app__loginContainer">
               <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
               <Button onClick={() => setOpen(true)}>Sign Up</Button>
             </div>
-          )} */}
+          )}
           </div>
            {
              posts.map(({post, id}) => (

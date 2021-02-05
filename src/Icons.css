@@ -1,0 +1,23 @@
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.icons__home {
+  width: 30px;
+  padding-right: 2px;
+}
+
+.icons__messenger {
+  width: 30px;
+}
+
+.icons__location {
+  width: 30px;
+  padding-bottom: 3px;
+}
+
+.icons__heart {
+  width: 30px;
+}

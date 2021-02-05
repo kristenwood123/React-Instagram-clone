@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { Button, Input } from '@material-ui/core'
 import ImageUpload from './ImageUpload'
+import Icons from './Icons'
 // import InstagramEmbed from 'react-instagram-embed';
 
 
@@ -94,26 +95,17 @@ const App = () => {
     auth
       .signInWithEmailAndPassword(email, password)
       .catch((error) => alert(error.message))
-
       //close modal
       setOpenSignIn(false)
   }
 
   return (
-      <div className="app">    
-
-      {user?.displayName ? (
-        <ImageUpload username={user.displayName} />
-      ) : (
-        <h3>Sorry you need to login to upload</h3>
-      )}
-      
+    <div className="app">    
         <Modal
           open={open}
           onClose={() => setOpen(false)}
-        >
+          >
           <div style={modalStyle} className={classes.paper}>
-
             <form className='app__signup'>
               <center>
                 <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt=""/>
@@ -137,9 +129,9 @@ const App = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <Button onClick={signUp} type='submit'>Sign up</Button>
-          </form>   
-        </div>
-      </Modal>
+            </form>   
+          </div>
+        </Modal>
 
         <Modal
           open={openSignIn}
@@ -169,35 +161,45 @@ const App = () => {
             </form>   
         </div>
       </Modal>
-
+      
         <div className="app__header">
-          <img 
-          className='app__headerImage' 
-          src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" 
-          alt="Instagram logo"
-          />
-          <input 
-          className='app__headerInput' 
-          type="text" placeholder='Search'
-          />
-          { user ? (
-            <Button onClick={() => auth.signOut()}>Logout</Button>
-          ) : (
-            <div className="app__loginContainer">
-              <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
-              <Button onClick={() => setOpen(true)}>Sign Up</Button>
-            </div>
-          )}
+            <img 
+            className='app__headerImage' 
+            src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" 
+            alt="Instagram logo"
+            />
+            <input 
+            className='app__headerInput' 
+            type="text" placeholder='Search'
+            />
+            <Icons />
+
+            { user ? (
+              <Button onClick={() => auth.signOut()}>Logout</Button>
+            ) : (
+              <div className="app__loginContainer">
+                <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
+                <Button onClick={() => setOpen(true)}>Sign Up</Button>
+              </div>
+            )}
           </div>
-           {
+
+          <div className="app__posts">
+              {
              posts.map(({post, id}) => (
                 <Post 
                   username={post.username} caption={post.caption} imageUrl={post.imageUrl} key={id}
                 />
-
-             ))}
-      </div>
-  
+             ))
+          }
+          </div>
+           
+         {user?.displayName ? (
+        <ImageUpload username={user.displayName} />
+      ) : (
+        <h3>Sorry you need to login to upload</h3>
+      )}
+    </div>
   );
 }
 

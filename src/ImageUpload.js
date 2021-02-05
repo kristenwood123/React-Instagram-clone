@@ -27,11 +27,13 @@ const ImageUpload = ({ username }) => {
           );
           setProgress(progress)
         },
+        
         (error) => {
           //Error function...
           console.log(error)
           alert(error.message)
         },
+
         () => {
           //complete function...
           storage

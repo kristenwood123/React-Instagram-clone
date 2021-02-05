@@ -12,6 +12,10 @@
   border-bottom: 1px solid lightgray;
 }
 
+.post__image:hover {
+  opacity: 0.7;
+}
+
 .post__text {
   font-weight: normal;
   padding: 20px;

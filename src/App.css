@@ -105,3 +105,10 @@ img:hover {
   display: flex;
   flex-direction: column;
 }
+
+.app__uploadmsg {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}

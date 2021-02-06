@@ -201,7 +201,7 @@ const App = () => {
           {user?.displayName ? (
         <ImageUpload username={user.displayName} />
       ) : (
-        <h3>Sorry you need to login to upload</h3>
+        <h3 className='app__uploadmsg'>Sorry you need to login to upload</h3>
       )}
       <Footer />
     </div>

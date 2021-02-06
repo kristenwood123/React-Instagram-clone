@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState, useEffect } from 'react'
-// import Footer from './Footer'
+import Footer from './Footer'
 import { db, auth } from './firebase'
 import Post from './Post'
 import { makeStyles } from '@material-ui/core/styles';
@@ -8,7 +8,8 @@ import Modal from '@material-ui/core/Modal';
 import { Button, Input } from '@material-ui/core'
 import ImageUpload from './ImageUpload'
 import Icons from './Icons'
-// import InstagramEmbed from 'react-instagram-embed';
+
+
 
 
 function getModalStyle() {
@@ -100,7 +101,7 @@ const App = () => {
   }
 
   return (
-    <div className="app">    
+    <div className="app">   
         <Modal
           open={open}
           onClose={() => setOpen(false)}
@@ -173,7 +174,6 @@ const App = () => {
             type="text" placeholder='Search'
             />
             <Icons />
-
             { user ? (
               <Button onClick={() => auth.signOut()}>Logout</Button>
             ) : (
@@ -183,22 +183,27 @@ const App = () => {
               </div>
             )}
           </div>
-
-          <div className="app__posts">
-              {
-             posts.map(({post, id}) => (
-                <Post 
-                  username={post.username} caption={post.caption} imageUrl={post.imageUrl} key={id}
-                />
-             ))
-          }
-          </div>
-           
-         {user?.displayName ? (
+          
+          <div className="app__posts">             
+                {
+                posts.map(({post, id}) => (
+                    <Post 
+                      username={post.username}
+                      postId={id} 
+                      user={user}
+                      caption={post.caption} 
+                      imageUrl={post.imageUrl} 
+                      key={id}
+                    />
+                ))
+              }           
+        </div>
+          {user?.displayName ? (
         <ImageUpload username={user.displayName} />
       ) : (
         <h3>Sorry you need to login to upload</h3>
       )}
+      <Footer />
     </div>
   );
 }

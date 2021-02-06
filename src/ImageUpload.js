@@ -67,9 +67,10 @@ const ImageUpload = ({ username }) => {
       onChange={e => setCaption(e.target.value)}
       />
       <input type="file"
+      className='imageUpload__file'
         onChange={handleChange}
       />
-      <Button onClick={handleUpload}>Upload</Button>
+      <Button onClick={handleUpload} className='imageUpload__button'>Upload</Button>
     </div>
   )
 }

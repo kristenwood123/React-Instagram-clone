@@ -1,0 +1,20 @@
+.imgicons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.bookmark__container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.imgicons img {
+  width: 25px;
+  margin: 8px 8px 0px 8px;
+}
+
+.imgicons__bookmark {
+  display: flex;
+  align-self: flex-end;
+}
